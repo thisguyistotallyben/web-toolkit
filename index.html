@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Toolkit | JSON Parser</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo"><span class="logo-white">Web</span>Toolkit</div>
+      </div>
+      <nav class="sidebar-items">
+        <div class="sidebar-item active" data-tool="json-parser">
+          <span class="sidebar-icon">{}</span>
+          <span class="sidebar-label">JSON Parser</span>
+        </div>
+        <div class="sidebar-item" data-tool="text-diff">
+          <span class="sidebar-icon">±</span>
+          <span class="sidebar-label">Text Diff</span>
+        </div>
+        <div class="sidebar-item" data-tool="base64">
+          <span class="sidebar-icon">#</span>
+          <span class="sidebar-label">Base64 Converter</span>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <!-- JSON Parser Section -->
+      <section id="tool-json-parser" class="tool-section">
+        <header class="workbench-header">
+          <div class="workbench-title">JSON Parser & Formatter</div>
+        </header>
+        <div class="workbench-body">
+          <section class="pane">
+            <header class="pane-header"><span class="pane-title">Raw JSON</span></header>
+            <div class="pane-content">
+              <textarea id="json-input" class="json-input" placeholder='Paste JSON here...' spellcheck="false"></textarea>
+              <div id="error-overlay" class="error-overlay"></div>
+            </div>
+          </section>
+          <section class="pane">
+            <header class="pane-header">
+              <span class="pane-title">Interactive Viewer</span>
+              <div class="view-modes">
+                <button class="mode-btn" id="copy-formatted-btn">Copy Formatted</button>
+                <button class="mode-btn" id="copy-minified-btn">Copy Minified</button>
+              </div>
+            </header>
+            <div class="pane-content" id="viewer-container">
+              <div id="interactive-viewer" class="interactive-viewer"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Text Diff Section -->
+      <section id="tool-text-diff" class="tool-section" style="display: none;">
+        <header class="workbench-header">
+          <div class="workbench-title">Text Diff Checker</div>
+        </header>
+        <div class="workbench-body diff-layout">
+          <div class="diff-inputs">
+            <section class="pane">
+              <header class="pane-header"><span class="pane-title">Original Text</span></header>
+              <div class="pane-content">
+                <textarea id="diff-input-1" class="json-input" placeholder="Paste original text..."></textarea>
+              </div>
+            </section>
+            <section class="pane">
+              <header class="pane-header"><span class="pane-title">Changed Text</span></header>
+              <div class="pane-content">
+                <textarea id="diff-input-2" class="json-input" placeholder="Paste changed text..."></textarea>
+              </div>
+            </section>
+          </div>
+          <section class="pane diff-result-pane">
+            <header class="pane-header">
+              <span class="pane-title">Difference</span>
+              <div class="view-modes">
+                <button class="mode-btn active" data-diff-mode="line">Line Diff</button>
+                <button class="mode-btn" data-diff-mode="word">Word Diff</button>
+              </div>
+            </header>
+            <div class="pane-content">
+              <div id="diff-viewer" class="diff-viewer"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Base64 Section -->
+      <section id="tool-base64" class="tool-section" style="display: none;">
+        <header class="workbench-header">
+          <div class="workbench-title">Base64 Converter</div>
+        </header>
+        <div class="workbench-body">
+          <section class="pane">
+            <header class="pane-header">
+              <span class="pane-title">Plain Text</span>
+              <button class="mode-btn" id="copy-text-btn">Copy</button>
+            </header>
+            <div class="pane-content">
+              <textarea id="base64-text-input" class="json-input" placeholder="Enter plain text..."></textarea>
+            </div>
+          </section>
+          <section class="pane">
+            <header class="pane-header">
+              <span class="pane-title">Base64</span>
+              <button class="mode-btn" id="copy-base64-btn">Copy</button>
+            </header>
+            <div class="pane-content">
+              <textarea id="base64-output" class="json-input" placeholder="Enter base64..."></textarea>
+              <div id="base64-error" class="error-overlay"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
